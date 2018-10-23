@@ -65,6 +65,7 @@ driver.switchTo().parentFrame();
 //focus on pim
 A.moveToElement(driver.findElementByXPath("//span[contains(text(),'PIM')]")).perform();
 A.click(driver.findElementByXPath("//span[contains(text(),'Employee List')]")).perform();
+Thread.sleep(1000);
 
 // switch to employee information frame
 driver.switchTo().frame("rightMenu");
@@ -75,23 +76,20 @@ if(Einfo.getText().equals("Employee Information"))
 	else 
 		System.out.println("Failed to display Employee information page");	
 int rc=driver.findElementsByXPath("//table/tbody/tr").size();
+System.out.println(rc);
 int colc=driver.findElementsByXPath("//table/tbody/tr[1]/td").size();
 
-for(int i=1;i<=colc;i++){
+for(int i=1;i<=rc;i++){
 	
-	
-	
+	String xx= driver.findElementByXPath("//table/tbody/tr["+i+"]/td[2]").getText();
+if(xx.equals(comparison)){
+				String comparison1=driver.findElementByXPath("//table/tbody/tr["+i+"]/td[3]/a").getText();
+				if (comparison1.equals("Harley Quinn")){
+				System.out.println("Employee Name verified and is positive");	
+				}
+				break;
+	}
 }
-
-
-
-
-
-	
-
-
-
-
 
 
 }
