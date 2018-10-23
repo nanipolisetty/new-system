@@ -90,7 +90,14 @@ if(xx.equals(comparison)){
 				break;
 	}
 }
-
-
+driver.switchTo().parentFrame();
+driver.findElementByXPath("//ul/li[3]/a[contains(text(),'Logout')]").click();
+String verifyinglogout=driver.getTitle();
+if(verifyinglogout.equals("OrangeHRM - New Level of HR Management"))
+	System.out.println("home page dispalyed after logout");
+else
+	System.out.println("failed to display home page after logout");
+	
+	
 }
 }
